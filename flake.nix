@@ -25,19 +25,19 @@
               asar
             ];
             installPhase = ''
-	           mkdir -p $out/share
-              	   cp -r ${p.signal-desktop}/share/* $out/share/
+              	           mkdir -p $out/share
+                           cp -r ${p.signal-desktop}/share/* $out/share/
 
-              	   asar e $out/${asarSource} $out/share/temp
-              	   cat ${style} >> $out/share/temp/${styleSource}
-              	   asar p $out/share/temp $out/app_custom.asar
+                           asar e $out/${asarSource} $out/share/temp
+                           cat ${style} >> $out/share/temp/${styleSource}
+                           asar p $out/share/temp $out/app_custom.asar
 
-		   mkdir -p $out/bin
-              	   makeWrapper '${p.lib.getExe p.electron_39}' "$out/bin/signal-desktop" \
-              	     --add-flags "$out/app_custom.asar" \
-                           --set-default ELECTRON_FORCE_IS_PACKAGED 1 \
-                           --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--enable-features=WaylandWindowDecorations --enable-wayland-ime=true}}" \
-              	'';
+              		   mkdir -p $out/bin
+                           makeWrapper '${p.lib.getExe p.electron_41}' "$out/bin/signal-desktop" \
+                        	--add-flags "$out/app_custom.asar" \
+                                --set-default ELECTRON_FORCE_IS_PACKAGED 1 \
+                                --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--enable-features=WaylandWindowDecorations --enable-wayland-ime=true}}" \
+                            	'';
             desktopItems = [
               (p.makeDesktopItem {
                 name = "signal";
