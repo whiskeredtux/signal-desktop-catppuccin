@@ -101,7 +101,7 @@
 
 /* conversation area */
 .module-timeline {
-  background-color: #1e1e2e !important;
+  background-color: #181825 !important;
 }
 
 /* messages */
@@ -151,7 +151,7 @@
 
 /* outgoing messages */
 .module-message__container--outgoing {
-  background-color: #181825 !important;
+  background-color: #1e1e2e !important;
 }
 
 /*
