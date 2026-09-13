@@ -116,6 +116,19 @@
   border: 0px !important;
 }
 
+/* quoted/replied-to message inside outgoing messages */
+.module-quote--outgoing > .module-quote__primary,
+.module-quote--outgoing > .module-quote__icon-container {
+  background-color: #313244 !important;
+  color: #cdd6f4 !important;
+  border: 0px !important;
+}
+
+/* text inside the quoted message */
+.module-quote--outgoing > .module-quote__primary * {
+  color: #cdd6f4 !important;
+}
+
 /* call again button */
 .module-Button--system-message {
   background-color: #45475a !important;
