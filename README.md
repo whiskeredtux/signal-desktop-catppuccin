@@ -3,7 +3,8 @@
 > A dark theme for [Signal desktop](https://signal.org).
 
 Inspired by [Catppuccin themes for Signal Desktop](https://github.com/CalfMoon/signal-desktop).
-And based on [Dracula theme for Signal Desktop](https://github.com/dracula/signal-desktop).
+
+Based on [Dracula theme for Signal Desktop](https://github.com/dracula/signal-desktop).
 
 ![Screenshot](./screenshot.png)
 
