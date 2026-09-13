@@ -151,12 +151,7 @@
 
 /* outgoing messages */
 .module-message__container--outgoing {
-  background-color: #89b4fa !important;
-  color: #1e1e2e !important;
-}
-
-.module-message__container--outgoing * {
-  color: #1e1e2e !important;
+  background-color: #45475a !important;
 }
 
 /*
