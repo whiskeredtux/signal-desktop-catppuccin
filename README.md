@@ -6,7 +6,7 @@ Inspired by [Catppuccin themes for Signal Desktop](https://github.com/CalfMoon/s
 
 Based on [Dracula theme for Signal Desktop](https://github.com/dracula/signal-desktop).
 
-![Screenshot](./screenshot.png)
+![Screenshot](./mocha.webp)
 
 ## Install
 
