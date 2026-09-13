@@ -1,32 +1,71 @@
-# Dracula for [Signal](https://signal.org)
+# Catppuccin mocha theme for [Signal](https://signal.org) on NixOS
 
 > A dark theme for [Signal desktop](https://signal.org).
 
 Inspired by [Catppuccin themes for Signal Desktop](https://github.com/CalfMoon/signal-desktop).
+And based on [Dracula theme for Signal Desktop](https://github.com/dracula/signal-desktop).
 
 ![Screenshot](./screenshot.png)
 
 ## Install
 
-All instructions can be found at [draculatheme.com/signal](https://draculatheme.com/signal-desktop).
-
-## Team
-
-This theme is maintained by the following person(s) and a bunch of [awesome contributors](https://github.com/dracula/signal-desktop/graphs/contributors).
-
-| [![CharlieTUX](https://github.com/charlieTUX.png?size=100)](https://github.com/charlieTUX) |
-| ------------------------------------------------------------------------------------------ |
-| [CharlieTUX](https://github.com/charlieTUX)                                                |
-
-## Community
-
-- [Twitter](https://twitter.com/draculatheme) - Best for getting updates about themes and new stuff.
-- [GitHub](https://github.com/dracula/dracula-theme/discussions) - Best for asking questions and discussing issues.
-- [Discord](https://draculatheme.com/discord-invite) - Best for hanging out with the community.
-
-## Dracula PRO
-
-[![Dracula PRO](./.github/dracula-pro.png)](https://draculatheme.com/pro)
+Make sure to have signal-desktop installed, then add the following to your inputs section in flake.nix:
+```
+signal-desktop-catppuccin = {
+  url = "github:whiskeredtux/signal-desktop-catppuccin";
+  inputs.nixpkgs.follows = "nixpkgs";
+};
+```
+In the outputs section, add a let block and an overlay like so:
+```
+  outputs = inputs@{ self, nixpkgs, ... }:
+  let
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    catppuccinOverlay = final: prev: {
+      signal-desktop = prev.signal-desktop.overrideAttrs (old: {
+        nativeBuildInputs =
+          (old.nativeBuildInputs or [])
+          ++ [ final.asar ];
+        postInstall = (old.postInstall or "") + ''
+          tmp="$(mktemp -d)"
+          trap 'rm -rf "$tmp"' EXIT
+          asar e \
+            "$out/share/signal-desktop/app.asar" \
+            "$tmp"
+          cp \
+            ${inputs.signal-desktop-catppuccin}/sample/themes.css \
+            "$tmp/stylesheets/themes.css"
+          {
+            printf '%s\n' '@import "themes.css";'
+            cat "$tmp/stylesheets/manifest.css"
+          } > "$tmp/stylesheets/manifest.css.new"
+          mv \
+            "$tmp/stylesheets/manifest.css.new" \
+            "$tmp/stylesheets/manifest.css"
+          asar p \
+            "$tmp" \
+            "$tmp/app.asar"
+          mv \
+            "$tmp/app.asar" \
+            "$out/share/signal-desktop/app.asar"
+        '';
+      });
+    };
+  in {
+    nixosConfigurations = {
+      <hostname> = nixpkgs.lib.nixosSystem {
+        [ ... ]
+        modules = [
+          {
+            nixpkgs.overlays = [ catppuccinOverlay ];
+          }
+        ];
+      };
+    };
+  };
+```
+`nix flake update && sudo nixos-rebuild switch --flake .#<hostname>`
+There you go :)
 
 ## License
 
