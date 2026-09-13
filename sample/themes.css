@@ -152,6 +152,13 @@
 /* outgoing messages */
 .module-message__container--outgoing {
   background-color: #89b4fa !important;
+  color: #1e1e2e !important;
+}
+
+/* outgoing message text */
+.module-message__container--outgoing,
+.module-message__container--outgoing * {
+  color: #1e1e2e !important;
 }
 
 /*
