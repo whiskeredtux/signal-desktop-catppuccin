@@ -94,6 +94,16 @@
   background-color: #45475a !important;
 }
 
+/* emoji picker */
+.module-emoji-picker {
+  background-color: #1e1e2e !important;
+  color: #cdd6f4 !important;
+}
+
+.module-emoji-picker * {
+  color: #cdd6f4 !important;
+}
+
 /* the vm player that appears at top */
 .MiniPlayer {
   background-color: #45475a !important;
@@ -114,6 +124,16 @@
 .module-quote--incoming > .module-quote__icon-container {
   background-color: #45475a !important;
   border: 0px !important;
+}
+
+/* + attachment menu */
+.CompositionArea__attachment-menu {
+  background-color: #1e1e2e !important;
+  color: #cdd6f4 !important;
+}
+
+.CompositionArea__attachment-menu * {
+  color: #cdd6f4 !important;
 }
 
 /* quoted/replied-to message inside outgoing messages */
