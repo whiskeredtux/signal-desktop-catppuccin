@@ -144,6 +144,21 @@
   background-color: #313244 !important;
 }
 
+/* incoming messages */
+.module-message__container--incoming {
+  background-color: #313244 !important;
+}
+
+/* outgoing messages */
+.module-message__container--outgoing {
+  background-color: #89b4fa !important;
+  color: #1e1e2e !important;
+}
+
+.module-message__container--outgoing * {
+  color: #1e1e2e !important;
+}
+
 /*
   ____      _ _ _                  _
  / ___|__ _| | (_)_ __   __ _     / \   _ __ ___  __ _
