@@ -131,15 +131,6 @@
   background-color: #313244 !important;
 }
 
- /* emoji picker */
-.EmojiPicker,
-.EmojiPicker__container,
-.module-emoji-picker,
-.emoji-picker,
-.emoji-picker * {
-  background-color: #1e1e2e !important;
-}
-
 /* the today or yesterday thing that appears when you scroll up */
 .TimelineDateHeader--floating {
   background-color: #313244 !important;
@@ -160,7 +151,7 @@
 
 /* outgoing messages */
 .module-message__container--outgoing {
-  background-color: #45475a !important;
+  background-color: #89b4fa !important;
 }
 
 /*
